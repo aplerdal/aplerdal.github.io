@@ -3,7 +3,7 @@
 https://github.com/Team-Code/KA_Offline -->
 <html> 
  <head>
-    <title>Processing.JS inside Webpages: Template</title> 
+    <title>[Alpha 0.0.1] Pool.io</title> 
 </head>
  <body>
     <p align="center"> 
@@ -24,15 +24,57 @@ https://github.com/Team-Code/KA_Offline -->
         frameRate(30);
         
         // ProgramCodeGoesHere
-        fill(255, 255, 0);
-        ellipse(200, 200, 200, 200);
-        noFill();
-        stroke(0, 0, 0);
-        strokeWeight(2);
-        arc(200, 200, 150, 100, 0, PI);
-        fill(0, 0, 0);
-        ellipse(250, 200, 10, 10);
-        ellipse(153, 200, 10, 10);
+        var x = 20;
+var y = 20;
+var keyValueR = "";
+var keyValueU = "";
+var keyValueL = "";
+var keyValueD = "";
+
+keyPressed = function() {
+    if ( keyCode === RIGHT ) {
+        keyValueR = "right";
+    }
+    if ( keyCode === UP ) {
+        keyValueU = "up";
+    }
+    if ( keyCode === LEFT ) {
+        keyValueL = "left";
+    }
+    if ( keyCode === DOWN ) {
+        keyValueD = "down";
+    }
+};
+
+keyReleased = function() {
+    keyValueR = "";
+    keyValueU = "";
+    keyValueL = "";
+    keyValueD = "";
+};
+
+draw = function() {
+    background(255);
+    if ( keyValueR === "right" ) {
+        x+=5;
+    }
+    if ( keyValueD === "down" ) {
+        y+=5;
+    }
+    if ( keyValueL === "left" ) {
+        x-=5;
+    }
+    if ( keyValueU === "up" ) {
+        y-=5;
+    }
+    PImage b;
+
+    b = loadImage("Player.jpg");
+
+    image(b, 0, 0);
+
+    image(b, 0, 0, width/2, height/2);
+};
     }};
 
     // Get the canvas that Processing-js will use
