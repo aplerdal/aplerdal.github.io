@@ -1,48 +1,44 @@
-<html>
-<head>
-<title> Pool.io - on GitHub</title>
+<!DOCTYPE html>
+<!-- This is based on DillingerLee's great template here:
+https://github.com/Team-Code/KA_Offline -->
+<html> 
+ <head>
+    <title>Processing.JS inside Webpages: Template</title> 
 </head>
-	<style>p{
-			font-family: Fantasy;
-			font-size:40px;
-			color:rgb(50, 180, 240);
-		}
-		</style>
-		<style>h3{
-			font-family: Helvetica;
-			font-size:20px;
-		}
-		</style>
-		<style>h2{
-			font-family: Helvetica;
-			font-size:30px;
-		}
-		</style>
-<body>
-	<script>
-		rect(100,100,100,100)
-	
-	
-	
-	</script>
-	<marquee><p>pool.io on github!............pool.io on github!............pool.io on github!............pool.io on github............pool.io on github............pool.io on github............pool.io on github............pool.io on github............pool.io on github</p></marquee>
-	<h2> Instructions </h2>
-	<h3> WASD to move, and click to attack.
-		<br/>
-		right click to block with a shield </h3>
-		<br/>
-		<br/>
-		<center><strong><p>Pool.io</p></strong></center>
-		
-		<center><input type=text></center>
-		<center><input type=submit name=Start>Go!</center>
-		<h2>do you like the game</h2>
-		<input type=radio name=yn value= thank you :D> yes
-		<br/>
-		<input type=radio name=yn value= sorry we will try to improve your experiance :)> no
-		<br/>
-		<input type=submit>
-		<iframe src="https://scratch.mit.edu/projects/213917437/embed" allowtransparency="true" width="485" height="402" frameborder="0" scrolling="no" allowfullscreen></iframe>
+ <body>
+    <p align="center"> 
+	<!--This draws the Canvas on the webpage -->
+      <canvas id="mycanvas"></canvas> 
+    </p>
+ </body>
+ 
+ <!-- Run all the JavaScript stuff -->
+ <!-- Include the processing.js library -->
+ <!-- See https://khanacademy.zendesk.com/hc/en-us/articles/202260404-What-parts-of-ProcessingJS-does-Khan-Academy-support- for differences -->
+ <script src="https://cdn.jsdelivr.net/processing.js/1.4.8/processing.min.js"></script> 
+ 
+ <script>
+    var sketchProc = function(processingInstance) {
+     with (processingInstance) {
+        size(400, 400); 
+        frameRate(30);
+        
+        // ProgramCodeGoesHere
+        fill(255, 255, 0);
+        ellipse(200, 200, 200, 200);
+        noFill();
+        stroke(0, 0, 0);
+        strokeWeight(2);
+        arc(200, 200, 150, 100, 0, PI);
+        fill(0, 0, 0);
+        ellipse(250, 200, 10, 10);
+        ellipse(153, 200, 10, 10);
+    }};
 
-</body>
+    // Get the canvas that Processing-js will use
+    var canvas = document.getElementById("mycanvas"); 
+    // Pass the function sketchProc (defined in myCode.js) to Processing's constructor.
+    var processingInstance = new Processing(canvas, sketchProc); 
+ </script>
+
 </html>
