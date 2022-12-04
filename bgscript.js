@@ -12,7 +12,6 @@ function GetBGRInput(){
         document.getElementById('Hex').style.backgroundColor = bgrHex;
 
         document.getElementById('Hex').value = bgrToHex(bgrColor);
-        console.log(bgrToHex(bgrColor))
 
         document.getElementById('Rgb').style.color = textColor;
         document.getElementById('Rgb').style.backgroundColor = 'rgb('+hexToRgb(bgrHex)[0]+',0,0)';
@@ -24,7 +23,11 @@ function GetBGRInput(){
         document.getElementById('Rgb').value = hexToRgb(bgrHex)[0];
         document.getElementById('Rgb1').value = hexToRgb(bgrHex)[1];
         document.getElementById('Rgb2').value = hexToRgb(bgrHex)[2];
-        console.log(hexToRgb(bgrHex)[0] + ',' + hexToRgb(bgrHex)[1] + ',' + hexToRgb(bgrHex)[2])
+
+        console.log(bgrColor);
+        document.getElementById('Bgrsplit').value = bgrSplit(bgrColor)[0];
+        document.getElementById('Bgrsplit1').value = bgrSplit(bgrColor)[1];
+        document.getElementById('Bgrsplit2').value = bgrSplit(bgrColor)[2];
         //---
     }
 }
@@ -43,7 +46,6 @@ function GetHexInput(){
         document.getElementById('Hex').style.backgroundColor = '#'+hexColor;
 
         document.getElementById('Bgr').value = hexBgr;
-        console.log(hexBgr);
 
         document.getElementById('Rgb').style.color = textColor;
         document.getElementById('Rgb').style.backgroundColor = 'rgb('+hexToRgb(hexColor)[0]+',0,0)';
@@ -55,7 +57,11 @@ function GetHexInput(){
         document.getElementById('Rgb').value = hexToRgb(hexColor)[0];
         document.getElementById('Rgb1').value = hexToRgb(hexColor)[1];
         document.getElementById('Rgb2').value = hexToRgb(hexColor)[2];
-        console.log(hexToRgb(hexColor)[0] + ',' + hexToRgb(hexColor)[1] + ',' + hexToRgb(hexColor)[2])
+
+        console.log(hexBgr);
+        document.getElementById('Bgrsplit').value = bgrSplit(hexBgr)[0];
+        document.getElementById('Bgrsplit1').value = bgrSplit(hexBgr)[1];
+        document.getElementById('Bgrsplit2').value = bgrSplit(hexBgr)[2];
         //---
     }
 }
@@ -69,8 +75,26 @@ function CopyHex(){
 function CopyRgb(){
     navigator.clipboard.writeText('rgb(' + document.getElementById('Rgb').value + ',' +document.getElementById('Rgb1').value + ',' + document.getElementById('Rgb2').value + ')');
 }
+function CopyBgrsplit(){
+    navigator.clipboard.writeText('bgr(' + document.getElementById('bgrsplit').value + ',' +document.getElementById('bgrsplit1').value + ',' + document.getElementById('bgrsplit2').value + ')');
+}
 
 //--------------
+function bgrSplit(bgrColor){
+    let bgrInt = parseInt(bgrWithEndian(bgrColor, 'big'), 16);
+    bgrInt = Math.min(bgrInt, Math.pow(2, 15) - 1); // limit to 15-bit
+
+    let r = (bgrInt & 0b11111);
+    let g = ((bgrInt >>> 5) & 0b11111);
+    let b = ((bgrInt >>> 10) & 0b11111);
+    let rError = Math.floor(r / 32);
+    let gError = Math.floor(g / 32);
+    let bError = Math.floor(b / 32);
+
+    return (
+        [b,g,r]
+    )
+}
 
 function bgrToHex(bgrColor) {
     let bgrInt = parseInt(bgrWithEndian(bgrColor, 'big'), 16);
@@ -91,9 +115,11 @@ function bgrToHex(bgrColor) {
 }
 
 function bgrWithEndian(bgr, endian) {
-    if (endian === 'small') {
+    if (endian === 'little') {
+        console.log("little endian");
         return bgr;
     } else {
+        console.log("big endian");
         return bgr.slice(2, 4) + bgr.slice(0, 2);
     }
 }
@@ -102,7 +128,7 @@ function HexToBgr(hexColor) {
     const r = Math.floor(parseInt(hexColor.slice(0, 2), 16) / 8) << 0;
     const g = Math.floor(parseInt(hexColor.slice(2, 4), 16) / 8) << 5;
     const b = Math.floor(parseInt(hexColor.slice(4, 6), 16) / 8) << 10;
-    return (b + g + r).toString(16).padStart(4, '0').toUpperCase(); // big endian
+    return bgrWithEndian((b + g + r).toString(16).padStart(4, '0').toUpperCase(), 'big')// big endian
 }
 
 function rgbToHex(red, green, blue) {

@@ -59,6 +59,36 @@ input{
     height: 20px;
     width: 60px;
 }
+#Bgrsplit{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 60px;
+}
+#Bgrsplit1{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 60px;
+}
+#Bgrsplit2{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 60px;
+}
 
 #copyRgb{
     border-radius: 7px;
