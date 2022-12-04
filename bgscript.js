@@ -24,7 +24,13 @@ function GetBGRInput(){
         document.getElementById('Rgb1').value = hexToRgb(bgrHex)[1];
         document.getElementById('Rgb2').value = hexToRgb(bgrHex)[2];
 
-        console.log(bgrColor);
+        document.getElementById('Bgrsplit').style.color = '#FFFFFF';
+        document.getElementById('Bgrsplit').style.backgroundColor = 'rgb(0,0,'+ bgrSplit(bgrColor)[0]*8 +')';
+        document.getElementById('Bgrsplit1').style.color = '#FFFFFF';
+        document.getElementById('Bgrsplit1').style.backgroundColor = 'rgb(0,'+bgrSplit(bgrColor)[1]*8+',0)';
+        document.getElementById('Bgrsplit2').style.color = '#FFFFFF';
+        document.getElementById('Bgrsplit2').style.backgroundColor = 'rgb('+ bgrSplit(bgrColor)[2]*8 +',0,0)';
+
         document.getElementById('Bgrsplit').value = bgrSplit(bgrColor)[0];
         document.getElementById('Bgrsplit1').value = bgrSplit(bgrColor)[1];
         document.getElementById('Bgrsplit2').value = bgrSplit(bgrColor)[2];
@@ -43,22 +49,28 @@ function GetHexInput(){
         document.getElementById('Bgr').style.backgroundColor = '#'+hexColor;
 
         document.getElementById('Hex').style.color = textColor;
-        document.getElementById('Hex').style.backgroundColor = '#'+hexColor;
+        document.getElementById('Hex').style.backgroundColor = '#'+bgrToHex(hexBgr);
 
         document.getElementById('Bgr').value = hexBgr;
 
-        document.getElementById('Rgb').style.color = textColor;
+        document.getElementById('Rgb').style.color = '#FFFFFF';
         document.getElementById('Rgb').style.backgroundColor = 'rgb('+hexToRgb(hexColor)[0]+',0,0)';
-        document.getElementById('Rgb1').style.color = textColor;
+        document.getElementById('Rgb1').style.color = '#FFFFFF';
         document.getElementById('Rgb1').style.backgroundColor = 'rgb(0,'+hexToRgb(hexColor)[1]+',0)';
-        document.getElementById('Rgb2').style.color = textColor;
+        document.getElementById('Rgb2').style.color = '#FFFFFF';
         document.getElementById('Rgb2').style.backgroundColor = 'rgb(0,0,' + hexToRgb(hexColor)[2] +')';
 
         document.getElementById('Rgb').value = hexToRgb(hexColor)[0];
         document.getElementById('Rgb1').value = hexToRgb(hexColor)[1];
         document.getElementById('Rgb2').value = hexToRgb(hexColor)[2];
 
-        console.log(hexBgr);
+        document.getElementById('Bgrsplit').style.color = '#FFFFFF';
+        document.getElementById('Bgrsplit').style.backgroundColor = 'rgb(0,0,'+ bgrSplit(hexBgr)[0]*8 +')';
+        document.getElementById('Bgrsplit1').style.color = '#FFFFFF';
+        document.getElementById('Bgrsplit1').style.backgroundColor = 'rgb(0,'+bgrSplit(hexBgr)[1]*8 +',0)';
+        document.getElementById('Bgrsplit2').style.color = '#FFFFFF';
+        document.getElementById('Bgrsplit2').style.backgroundColor = 'rgb('+ bgrSplit(hexBgr)[2]*8 +',0,0)';
+
         document.getElementById('Bgrsplit').value = bgrSplit(hexBgr)[0];
         document.getElementById('Bgrsplit1').value = bgrSplit(hexBgr)[1];
         document.getElementById('Bgrsplit2').value = bgrSplit(hexBgr)[2];

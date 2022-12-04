@@ -32,7 +32,8 @@ input{
 #Rgb{
     border-radius: 7px;
     border-style: solid;
-    background-color: white;
+    background-color: rgb(255, 0, 0);
+    color: white;
     font-family: monospace;
     font-size: 16px;
     text-align: center;
@@ -42,7 +43,8 @@ input{
 #Rgb1{
     border-radius: 7px;
     border-style: solid;
-    background-color: white;
+    background-color: rgb(0, 255, 0);
+    color: white;
     font-family: monospace;
     font-size: 16px;
     text-align: center;
@@ -52,7 +54,8 @@ input{
 #Rgb2{
     border-radius: 7px;
     border-style: solid;
-    background-color: white;
+    background-color: rgb(0, 0, 255);
+    color: white;
     font-family: monospace;
     font-size: 16px;
     text-align: center;
@@ -62,7 +65,8 @@ input{
 #Bgrsplit{
     border-radius: 7px;
     border-style: solid;
-    background-color: white;
+    background-color: rgb(0, 0, 255);
+    color: white;
     font-family: monospace;
     font-size: 16px;
     text-align: center;
@@ -72,7 +76,8 @@ input{
 #Bgrsplit1{
     border-radius: 7px;
     border-style: solid;
-    background-color: white;
+    background-color: rgb(0, 255, 0);
+    color: white;
     font-family: monospace;
     font-size: 16px;
     text-align: center;
@@ -82,7 +87,8 @@ input{
 #Bgrsplit2{
     border-radius: 7px;
     border-style: solid;
-    background-color: white;
+    background-color: rgb(255, 0, 0);
+    color: white;
     font-family: monospace;
     font-size: 16px;
     text-align: center;
