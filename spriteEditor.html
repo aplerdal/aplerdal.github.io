@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <span>X: </span><input type="range" name="xp" id="xp" min="0" max="256" value="0" oninput="setNav()"><br>
+    <span>Y: </span><input type="range" name="yp" id="yp" min="0" max="256" value="0" oninput="setNav()"><br>
+    <span>Zoom: </span><input type="range" name="zoom" id="zoom" min="10" max="256" value="10" oninput="setNav()"><br>
+    <canvas id="canvas" width="256" height="256"style="border:5px solid rgb(40, 37, 43);;">
+
+    </canvas>
+    <script src="sescript.js"></script>
+</body>
+</html>

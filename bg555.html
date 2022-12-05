@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGR555 converter</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="BGR555">
+        <script src="bgscript.js"></script>
+        <span style="font-size: 30px;font-weight:1000;">BGR 555 converter (For SNES and other consoles)</span>
+        <br><br>
+        <div>
+        <span>BGR 555:</span>
+        <input type="text" id="Bgr" value="FFFF" onchange="GetBGRInput()"><span>&nbsp;</span><input type="button"  id='copyBgr' onclick="CopyBgr()" value="Copy">
+        </div>
+        <div>
+        <span>&nbsp;&nbsp;HEX&nbsp;&nbsp;:</span>
+        <input type="text" id="Hex" value="FFFFFF" onchange="GetHexInput()"><span>&nbsp;</span><input type="button"  id='copyHex' onclick="CopyHex()" value="Copy">
+        </div>
+        <div>
+            <span>&nbsp;&nbsp;RGB&nbsp;&nbsp;:</span>
+            <input type="text" id="Rgb" value="255" onchange="GetRgbInput()">
+            <input type="text" id="Rgb1" value="255" onchange="GetRgbInput()">
+            <input type="text" id="Rgb2" value="255" onchange="GetRgbInput()"><span>&nbsp;</span><input type="button" id='copyRgb' onclick="CopyRgb()" value="Copy">
+        </div>
+        <span><br>Info:<br>RGB input is currently disabled. I might update<br>it eventually</span>
+    </div>
+</body>
+</html>

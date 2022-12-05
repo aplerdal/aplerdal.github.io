@@ -1,0 +1,80 @@
+body{
+    font-family: monospace,'Courier New',Courier;
+    background-color: rgb(26, 23, 29);
+}
+span{
+    color: rgb(255, 255, 255);
+}
+
+input{
+    border-color: rgb(26, 23, 29);
+}
+#Bgr{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 215px;
+}
+#Hex{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 215px;
+}
+#Rgb{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 60px;
+}
+#Rgb1{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 60px;
+}
+#Rgb2{
+    border-radius: 7px;
+    border-style: solid;
+    background-color: white;
+    font-family: monospace;
+    font-size: 16px;
+    text-align: center;
+    height: 20px;
+    width: 60px;
+}
+
+#copyRgb{
+    border-radius: 7px;
+    border-style: solid;
+    width: 45px;
+    height: 25px;
+}
+#copyHex{
+    border-radius: 7px;
+    border-style: solid;
+    width: 45px;
+    height: 25px;
+}
+#copyBgr{
+    border-radius: 7px;
+    border-style: solid;
+    width: 45px;
+    height: 25px;
+}
