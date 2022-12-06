@@ -114,3 +114,9 @@ input{
     width: 45px;
     height: 25px;
 }
+
+#colfile{
+    color: white;
+    font-family: monospace,'Courier New', Courier;
+    font-size: 15px;
+}
