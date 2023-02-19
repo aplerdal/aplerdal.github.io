@@ -7,10 +7,10 @@ function readCOL() {
     var u = new Uint8Array(this.result),
     a = new Array(u.length),
     i = u.length;
-    while (i--) // map to hex
+    while (i--)
     a[i] = (u[i] < 16 ? '0' : '') + u[i].toString(16);
-    u = null; // free memory
-    console.log(a); // work with this
+    u = null;
+    console.log(a);
     var canvas = document.createElement("canvas");
     var ctx = canvas.getContext("2d")
     canvas.height=1;
