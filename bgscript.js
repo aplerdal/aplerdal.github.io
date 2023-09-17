@@ -169,9 +169,13 @@ function setEndian(end){
         endian = end;
         document.getElementById("esml").style.backgroundColor = "rgb(51, 153, 51)";
         document.getElementById("ebig").style.backgroundColor= "rgb(255,255,255)";
+        GetBGRInput();
+        //GetHexInput();
     } else if (end === 'big'){
         endian = end;
         document.getElementById("ebig").style.backgroundColor= "rgb(51, 153, 51)";
         document.getElementById("esml").style.backgroundColor= "rgb(255,255,255)";
+        GetBGRInput();
+        //GetHexInput();
     }
 }
