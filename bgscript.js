@@ -1,3 +1,5 @@
+let endian = 'big'
+
 function GetBGRInput(){
     let bgrColor = document.getElementById('Bgr').value;
     if (bgrColor.length==4) {
@@ -93,7 +95,7 @@ function CopyBgrsplit(){
 
 //--------------
 function bgrSplit(bgrColor){
-    let bgrInt = parseInt(bgrWithEndian(bgrColor, 'big'), 16);
+    let bgrInt = parseInt(bgrWithEndian(bgrColor, endian), 16);
     bgrInt = Math.min(bgrInt, Math.pow(2, 15) - 1); // limit to 15-bit
 
     let r = (bgrInt & 0b11111);
@@ -109,7 +111,7 @@ function bgrSplit(bgrColor){
 }
 
 function bgrToHex(bgrColor) {
-    let bgrInt = parseInt(bgrWithEndian(bgrColor, 'big'), 16);
+    let bgrInt = parseInt(bgrWithEndian(bgrColor, endian), 16);
     bgrInt = Math.min(bgrInt, Math.pow(2, 15) - 1); // limit to 15-bit
 
     let r = (bgrInt & 0b11111) * 8;
@@ -140,7 +142,7 @@ function HexToBgr(hexColor) {
     const r = Math.floor(parseInt(hexColor.slice(0, 2), 16) / 8) << 0;
     const g = Math.floor(parseInt(hexColor.slice(2, 4), 16) / 8) << 5;
     const b = Math.floor(parseInt(hexColor.slice(4, 6), 16) / 8) << 10;
-    return bgrWithEndian((b + g + r).toString(16).padStart(4, '0').toUpperCase(), 'big')// big endian
+    return bgrWithEndian((b + g + r).toString(16).padStart(4, '0').toUpperCase(), endian)// big endian
 }
 
 function rgbToHex(red, green, blue) {
@@ -160,4 +162,15 @@ function hexToRgb(hex) {
         return [r,g,b];
     } 
     return null;
-  }
+}
+
+function setEndian(end){
+    if (end === 'little'){
+        endian = end;
+        document.getElementById("esml").style.backgroundColor = "rgb(51, 153, 51)";
+        document.getElementById("ebig").style.backgroundColor= "rgb(255,255,255)";
+    } else if (end === 'big'){
+        document.getElementById("ebig").style.backgroundColor= "rgb(51, 153, 51)";
+        document.getElementById("esml").style.backgroundColor= "rgb(255,255,255)";
+    }
+}

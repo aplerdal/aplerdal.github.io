@@ -12,6 +12,8 @@
         <script src="bgscript.js"></script>
         <span style="font-size: 30px;font-weight:1000;">BGR 555 converter (For SNES and other consoles)</span>
         <br><br>
+        
+        <span>Endian </span><button class="endianess" id="esml" onclick="setEndian('little')">little</button> <button onclick="setEndian('big')" class="endianess" id="ebig">big</button>
         <div>
         <span>BGR 555:</span>
         <input type="text" id="Bgr" value="FFFF" onchange="GetBGRInput()"><span>&nbsp;</span><input type="button"  id='copyBgr' onclick="CopyBgr()" value="Copy">

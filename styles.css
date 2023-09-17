@@ -120,3 +120,12 @@ input{
     font-family: monospace,'Courier New', Courier;
     font-size: 15px;
 }
+.endianess{
+    border-radius: 7px;
+    border-style:none;
+    width: 45px;
+    height: 25px;
+}
+#ebig{
+    background-color: rgb(51, 153, 51);
+}
