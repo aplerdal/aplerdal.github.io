@@ -142,7 +142,7 @@ function HexToBgr(hexColor) {
     const r = Math.floor(parseInt(hexColor.slice(0, 2), 16) / 8) << 0;
     const g = Math.floor(parseInt(hexColor.slice(2, 4), 16) / 8) << 5;
     const b = Math.floor(parseInt(hexColor.slice(4, 6), 16) / 8) << 10;
-    return bgrWithEndian((b + g + r).toString(16).padStart(4, '0').toUpperCase(), endian)// big endian
+    return bgrWithEndian((b + g + r).toString(16).padStart(4, '0').toUpperCase(), 'big')// big endian
 }
 
 function rgbToHex(red, green, blue) {
