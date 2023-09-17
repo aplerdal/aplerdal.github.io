@@ -170,6 +170,7 @@ function setEndian(end){
         document.getElementById("esml").style.backgroundColor = "rgb(51, 153, 51)";
         document.getElementById("ebig").style.backgroundColor= "rgb(255,255,255)";
         GetBGRInput();
+        //ignore hex input rn
         //GetHexInput();
     } else if (end === 'big'){
         endian = end;
