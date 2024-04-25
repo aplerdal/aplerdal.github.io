@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplerdal</title>
+    
+    
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/dark.css"
+        onload="document.documentElement.classList.add('sl-theme-dark');"
+    />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
+    <link rel="stylesheet" href="highlight.css">
+    <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
+</head>
+<body>
+    <sl-tab-group>
+        <sl-tab slot="nav" panel="home">
+            <sl-icon-button name="house" label="house">
+        </sl-icon-button>Home</sl-tab>
+        <sl-tab slot="nav" panel="projects">
+            <sl-icon-button name="tools" label="hammer"></sl-icon-button>
+            Projects
+        </sl-tab>
+        <sl-tab slot="nav" panel="posts">
+            <sl-icon-button name="newspaper" label="info"></sl-icon-button>
+            Posts
+        </sl-tab>
+        <sl-tab slot="nav" panel="about">
+            <sl-icon-button name="info-circle" label="info"></sl-icon-button>
+            About
+        </sl-tab>
+        
+        <sl-tab-panel name="home">
+            <h1>Home</h1>
+            This in the home tab.
+            <pre><code>namespace test;
+class Test{
+    public static void Main(string[] args){
+
+    }
+}</code></pre>
+        </sl-tab-panel>
+        <sl-tab-panel name="projects">
+            This is the tools tab panel.
+        </sl-tab-panel>
+        <sl-tab-panel name="posts">
+            This is the posts panel.
+        </sl-tab-panel>
+        <sl-tab-panel name="about">
+            This is the about tab panel.
+        </sl-tab-panel>
+    </sl-tab-group>
+
+    <footer>
+        <sl-divider></sl-divider>
+        Something at the bottom
+    </footer>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

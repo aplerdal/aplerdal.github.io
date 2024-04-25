@@ -1,0 +1,7 @@
+:host,
+.sl-theme-dark {
+    font-family: var(--sl-font-mono);
+}
+sl-tab-panel {
+    padding:10px;
+}
