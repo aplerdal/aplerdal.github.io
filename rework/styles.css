@@ -5,3 +5,18 @@
 sl-tab-panel {
     padding:10px;
 }
+.card-header [slot='header'] {
+    font-size: large;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#projects-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+#projects-container {
+    display: flex;
+    flex-wrap: wrap;
+}
