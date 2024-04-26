@@ -20,3 +20,7 @@ sl-tab-panel {
     display: flex;
     flex-wrap: wrap;
 }
+#projects-container sl-card {
+    padding: 10px;
+    width: 50%;
+}
