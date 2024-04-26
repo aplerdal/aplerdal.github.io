@@ -4,8 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplerdal</title>
-    
-    
+    <meta content="Aplerdal.github.io" property="og:title" />
+    <meta content="Aplerdal's website" property="og:description" />
+    <meta content="https://aplerdal.github.io" property="og:url" />
+    <meta content="#43B581" data-react-helmet="true" name="theme-color" />
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link
         rel="stylesheet"
         href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/dark.css"
@@ -46,7 +49,21 @@ class Test{
 }</code></pre>
         </sl-tab-panel>
         <sl-tab-panel name="projects">
-            This is the tools tab panel.
+            <div id="project-container">
+                <sl-card>
+                    <img src="" slot="img">
+                    <div slot="header">
+                        AdvancedEdit
+                        <sl-badge variant="primary">Tool</sl-badge>
+                        <sl-badge variant="neutral">C#</sl-badge>
+                    </div>
+                    AdvancedEdit is a tool for creating custom tracks for Mario Kart: Super Circuit.
+                    <div slot="footer">
+                        <sl-button href="https://github.com/aplerdal/AdvancedEdit" target="_blank">Source</sl-button>
+                        <sl-button href="https://github.com/aplerdal/AdvancedEdit/releases" target="_blank">Releases</sl-button>
+                    </div>
+                </sl-card>
+            </div>
         </sl-tab-panel>
         <sl-tab-panel name="posts">
             This is the posts panel.
