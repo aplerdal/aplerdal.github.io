@@ -14,9 +14,9 @@
         href="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/themes/dark.css"
         onload="document.documentElement.classList.add('sl-theme-dark');"
     />
-    <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/styles/vs2015.min.css">
     <link rel="stylesheet" href="highlight.css">
+    <link rel="stylesheet" href="styles.css">
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.9.0/build/highlight.min.js"></script>
     <script type="module" src="https://cdn.jsdelivr.net/npm/@shoelace-style/shoelace@2.15.0/cdn/shoelace-autoloader.js"></script>
 </head>
@@ -47,7 +47,6 @@
             <ul>
                 <li>C#</li>
             </ul>
-            <br>
             I have a some experience in:
             <ul>
                 <li>Rust</li>
@@ -58,11 +57,16 @@
                 <li>Java</li>
                 <li>Python</li>
             </ul>
+            Some other skills I have are:
+            <ul>
+                <li>Basic reverse engineering</li>
+                <li>Experience with binary data</li>
+            </ul>
             
         </sl-tab-panel>
         <sl-tab-panel name="projects">
             <div id="project-container">
-                <sl-card>
+                <sl-card class="project">
                     <img src="" slot="img">
                     <div slot="header">
                         AdvancedEdit
@@ -71,8 +75,22 @@
                     </div>
                     AdvancedEdit is a tool for creating custom tracks for Mario Kart: Super Circuit.
                     <div slot="footer">
-                        <sl-button href="https://github.com/aplerdal/AdvancedEdit" target="_blank">Source</sl-button>
-                        <sl-button href="https://github.com/aplerdal/AdvancedEdit/releases" target="_blank">Releases</sl-button>
+                        <sl-button-group>
+                            <sl-button href="https://github.com/aplerdal/AdvancedEdit" target="_blank" variant="primary" outline>Source</sl-button>
+                            <sl-button href="https://github.com/aplerdal/AdvancedEdit/releases" target="_blank" variant="primary" outline>Releases</sl-button>
+                        </sl-button-group>
+                    </div>
+                </sl-card>
+                <sl-card class="project">
+                    <img src="" slot="img">
+                    <div slot="header">
+                        AsciiEngine
+                        <sl-badge variant="primary">Demo</sl-badge>
+                        <sl-badge variant="neutral">C#</sl-badge>
+                    </div>
+                    AsciiEngine is a framework for making Ascii art style games using SDL2.
+                    <div slot="footer">
+                        <sl-button href="https://github.com/aplerdal/AsciiEngine" target="_blank" variant="primary" outline>Source</sl-button>
                     </div>
                 </sl-card>
             </div>
