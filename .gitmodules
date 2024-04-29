@@ -1,0 +1,3 @@
+[submodule "NoteFS"]
+	path = NoteFS
+	url = https://github.com/aplerdal/NoteFS.git
