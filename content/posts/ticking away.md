@@ -1,6 +1,6 @@
 +++
 title = "Ticking Away"
-date = 2026-08-27
+date = 2026-08-30
 description = "A deep dive into ticking in Mario Kart: Super Circuit"
 +++
 
