@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} &middot; {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+<article>
+  <h1>{{ page.title }}</h1>
+  <p class="meta">{{ page.date | date(format='%Y-%m-%d') }}</p>
+  <hr>
+  <br>
+  {{ page.content | safe }}
+  <br>
+</article>
+<hr>
+<p><a href="{{ get_url(path='@/posts/_index.md') }}">< back to posts</a></p>
+{% endblock content %}

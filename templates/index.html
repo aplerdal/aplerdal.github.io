@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>{{ config.title }}</h1>
+<p>{{ config.description }}</p>
+
+<hr>
+
+{% set section = get_section(path="posts/_index.md") %}
+<h2>Posts</h2>
+<ul class="post-list">
+  {% for page in section.pages %}
+  <li>
+    <time datetime="{{ page.date }}">{{ page.date | date(format='%Y-%m-%d') }}</time>
+    <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{% endblock content %}

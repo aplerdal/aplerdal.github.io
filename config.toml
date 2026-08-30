@@ -1,0 +1,19 @@
+base_url = "https://example.com"
+title = "Aplerdal's Blog"
+description = "Posts about whatever I'm interested in right now."
+default_language = "en"
+author = "Aplerdal"
+
+generate_feeds = true
+feed_filenames = ["rss.xml"]
+
+compile_sass = false
+build_search_index = false
+
+[markdown]
+smart_punctuation = false
+
+[markdown.highlighting]
+style = "inline"
+theme = "tokyo-night"
+error_on_missing_language = false
