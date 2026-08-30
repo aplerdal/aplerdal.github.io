@@ -23,8 +23,7 @@ void DriverCollision(Driver *driver)
 
         // If the driver is moving backwards, this function doesn't do anything
         if (driver->velocity < 0) return;
-        
-        ... // ROT_STATE was here if its relevant later
+        ...
         
         // Set the activeState and rotationState to WALL_BOUNCE
         driver->rotationState = ROT_STATE_WALL_BOUNCE
@@ -36,6 +35,8 @@ void DriverCollision(Driver *driver)
 }
 ```
 This function does two really important things for our situation. The first is that it sets the `activeState` and `rotationState` to `WALL_BOUNCE`. The other, which will come back up later, is setting our overall velocity based on the X and Y velocity. `velocity` and `velocityX ` and `velocityY` are *supposed* to stay in sync, but as you will see that isn't always the case.
+
+For a rundown of the kart states, there are three important ones `activeState` is the state of the kart this frame. `rotationState` is used for handling drifing and rotating the character sprite. `driverState` is the overall state of the kart. You don't really need to understand the differences, but rather just that they are each different.
 
 Anyhow, moving onto the next detail: maintaining the `WALL_BOUNCE` state. This is the most important part of ticking. I would argue that ticking is defined as driving in a `WALL_BOUNCE` state. There are a few ways the wall bounce state goes away after hitting a wall, but the main way is by our rotation state. Here is an overview of what happens in the `WALL_BOUNCE` rotation state
 ```c
@@ -72,7 +73,7 @@ This code is behind the reset back to `NORMAL`, which is what we are trying to a
 a few possible outcomes. If our speed is less than 256, the kart will reset `driftAngle` to zero, resetting the activeState to `NORMAL` in another function (`DriverWallBounce`) that I have included later, but just know that it will reset to `NORMAL` for now. If our speed is more than 256, our kart will slowly rotate to the same spot as if our speed was slower, getting us to the same spot. Importantly, if we aren't pressing A, something different happens, and the state is only reset to `NORMAL` when our speed drops *below* 16. For a bit of reference on these speeds, most characters have a top speed around 2000, so these speed gates are near zero. Therefore, when we aren't pressing A, the mushroom boost is able to carry us without resetting the state back to `NORMAL`. Pretty neat!
 
 The final key to getting ticking to work is hopping. Right when we hit a wall, even when hopping, our `velocityX` and `velocityY` are approximately halved, I won't show code for this, as it isn't super important and has a lot of details that aren't relevant to ticking. 
-The important detail here is that our actual speed always is based on `velocity` and *not* `velocityX` and `velocityY`. They are usually just used to make the math a bit easier. However, in some cases it does, like when we hop. Here is a shortened version of the code that runs. Once again, I will explain it afterwards.
+The important detail here is that our actual speed always is based on `velocity` and *not* `velocityX` and `velocityY`. They are usually just used to make the math a bit easier. This usally doesn't matter, but in some cases, like when we hop, it does. Here is a shortened version of the code that runs. Once again, I will explain it afterwards.
 ```c
 switch (driver->driverState) {
     case DRIVER_STATE_NORMAL:
