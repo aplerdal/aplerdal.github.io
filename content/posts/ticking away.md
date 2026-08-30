@@ -5,7 +5,7 @@ description = "A deep dive into ticking in Mario Kart: Super Circuit"
 +++
 
 Ticking is a mechanic in both *Super Mario Kart* and *Mario Kart: Super Circuit* (MKSC) often used in time trials that allows us to maintain speed from a mushroom longer than usual and even drive through the offroad.
-In either game, we can initiate the trick by mushrooming towards a wall or obstacle, hopping just before we hit it, and bouncing past whatever we hit. After we hit the wall accelerating will cancel the ticking boost, so counterintuitively we must release accelerate to go faster. Here's a quick example:
+In either game, we can initiate the trick by mushrooming towards a wall or obstacle, hopping just before we hit it, and bouncing past whatever we hit. After we hit the wall, accelerating will cancel the ticking boost, so counterintuitively we must release accelerate to go faster. Here's a quick example:
 ![With ticking](/images/ticking.gif)
 
 ## How it works
@@ -43,7 +43,7 @@ switch (driver->rotationState) {
 ...
 case ROT_STATE_WALL_BOUNCE:
     if ((driver->inputFlags & INPUT_FLG_ACCEL) != 0) {
-        // Presing gas (A)
+        // Pressing gas (A)
         if (driver->velocity < (256 << 16)) {
             // Reset kart if speed is less than 256.0
             driver->driftAngle = 0;
@@ -69,9 +69,9 @@ case ROT_STATE_WALL_BOUNCE:
 }
 ```
 This code is behind the reset back to `NORMAL`, which is what we are trying to avoid when ticking. When we are pressing A there are
-a few possible outcomes. If our speed is less than 256, the kart will reset `driftAngle` to zero, reseting the activeState to `NORMAL` in another function (`DriverWallBounce`) that I have included later, but just know that it will reset to `NORMAL` for now. If our speed is more than 256, our kart will slowly rotate to the same spot as if our speed was slower, getting us to the same spot. Importantly, if we aren't pressing A, something different happens, and the state is only reset to `NORMAL` when our speed drops *below* 16. For a bit of reference on these speeds, most characters have a top speed around 2000, so these speed gates are near zero. Therefore, when we aren't pressing A, the mushroom boost is able to carry us without resetting the state back to `NORMAL`. Pretty neat!
+a few possible outcomes. If our speed is less than 256, the kart will reset `driftAngle` to zero, resetting the activeState to `NORMAL` in another function (`DriverWallBounce`) that I have included later, but just know that it will reset to `NORMAL` for now. If our speed is more than 256, our kart will slowly rotate to the same spot as if our speed was slower, getting us to the same spot. Importantly, if we aren't pressing A, something different happens, and the state is only reset to `NORMAL` when our speed drops *below* 16. For a bit of reference on these speeds, most characters have a top speed around 2000, so these speed gates are near zero. Therefore, when we aren't pressing A, the mushroom boost is able to carry us without resetting the state back to `NORMAL`. Pretty neat!
 
-The final key to getting ticking to work is hopping. Right when we hit a wall, even when hopping, our `velocityX` and `velocityY` are aproximately halved, I won't show code for this, as it isn't super important and has a lot of details that aren't relevant to ticking. 
+The final key to getting ticking to work is hopping. Right when we hit a wall, even when hopping, our `velocityX` and `velocityY` are approximately halved, I won't show code for this, as it isn't super important and has a lot of details that aren't relevant to ticking. 
 The important detail here is that our actual speed always is based on `velocity` and *not* `velocityX` and `velocityY`. They are usually just used to make the math a bit easier. However, in some cases it does, like when we hop. Here is a shortened version of the code that runs. Once again, I will explain it afterwards.
 ```c
 switch (driver->driverState) {
@@ -93,9 +93,9 @@ If you don't remember it, here it is:
 ```c
 driver->velocity = math_hypot((int)driver->velocityX,(int)driver->velocityY) << 16;
 ```
-This is the only place the game converts from `velocityX` and `velocityY` to `velocity`. Rember how I mentioned that only `velocityX` and `velocityY` were halved when we hit a wall? This is *supposed* to handle that. However, when we are airborne, the driverState isn't `NORMAL` and is instead `AIRBORNE`, so we never hit the DriverCollision function that is supposed to change `velocity`. This means that `velocityX` and `velocityY` get totally ignored, and eventually get set based on `velocity` instead of the other way around. In essence, throwing away the speed loss we should get for hitting a wall, and allowing us to carry all of our speed through the wall hit.
+This is the only place the game converts from `velocityX` and `velocityY` to `velocity`. Remember how I mentioned that only `velocityX` and `velocityY` were halved when we hit a wall? This is *supposed* to handle that. However, when we are airborne, the driverState isn't `NORMAL` and is instead `AIRBORNE`, so we never hit the DriverCollision function that is supposed to change `velocity`. This means that `velocityX` and `velocityY` get totally ignored, and eventually get set based on `velocity` instead of the other way around. In essence, throwing away the speed loss we should get for hitting a wall, and allowing us to carry all of our speed through the wall hit.
 
-This is most of ticking, but there is one more important part, and that is the deceleration. This is a pretty simple one. The function that handles how much to decerate the kart based on the surface is only called when `activeState` is `NORMAL`, as mentioned earlier, since we remained in the `WALL_BOUNCE` state, it never gets called. The only way we decelerate while ticking is via `DriverWallBounce`. Here is that function:
+This is most of ticking, but there is one more important part, and that is the deceleration. This is a pretty simple one. The function that handles how much to decelerate the kart based on the surface is only called when `activeState` is `NORMAL`, as mentioned earlier, since we remained in the `WALL_BOUNCE` state, it never gets called. The only way we decelerate while ticking is via `DriverWallBounce`. Here is that function:
 ```c
 int SpeedLossByAngle[] = { -4, -8, -16, -24, -36, -56, -64, -85 };
 
@@ -132,6 +132,6 @@ void DriverWallBounce(Driver *driver)
 The key detail here is the `driver->acceleration =` portion, this sets our deceleration while ticking, which is based on the `driftAngle` of our kart based on the `SpeedLossByAnlge` table. You can also see that when the `driftAngle` is zero the kart will reset itself to `NORMAL` as mentioned earlier.
 
 ## Conclusion
-That makes everything I have learned about ticking based on the code of the game. Lots of my examples here have ommisions and simplifications to single out ticking, but all of the concepts should be completely accurate.
+That makes everything I have learned about ticking based on the code of the game. Lots of my examples here have omissions and simplifications to single out ticking, but all of the concepts should be completely accurate.
 
 Thanks for reading this, and if you have any questions feel free to reach out!
